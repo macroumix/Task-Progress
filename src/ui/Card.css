@@ -1,0 +1,23 @@
+.card {
+    display: grid;
+    grid-template-columns: 5fr 15fr;
+    margin: 25px;
+    padding: 15px;
+    height: 170px;
+    border-radius: 25px;
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.25);
+    background: linear-gradient(to right, #B17949ff, #785C39ff);
+  }
+
+.card > * {
+    list-style: none;
+    padding: 10px;
+    width: 100%;
+}
+
+.card img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+  
