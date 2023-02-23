@@ -3,8 +3,12 @@ import TaskBar from "./TaskBar";
 import { useState /* useEffect, useCallback */ } from "react";
 import Card from "../ui/Card";
 import classes from "./Tasks.module.css";
-import notebookImage from "../img/notebook.png"
-import darkNotebookImage from "../img/darknotebook.png"
+import notebookImage from "../img/notebook.png";
+import darkNotebookImage from "../img/darknotebook.png";
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import chevronDown from "../img/chevron-down-solid.svg";
+import chevronUp from "../img/chevron-up-solid.svg";
 
 const TASKS = [
   {
@@ -113,21 +117,16 @@ const Tasks = () => {
     setDummyState(!dummyState);
   };
 
-  /*   useEffect(() => {
-
-  }, [taskCompletionHandler])
- */
-
   const isTicked = (isChecked) => {
     return isChecked === true ? (
       <input type="checkbox" checked="checked" />
-      
     ) : (
       <input type="checkbox" />
     );
   };
 
   return (
+    
     <div className={classes.main}>
       <TaskBar tasks={TASKS} />
       <div>
@@ -140,10 +139,28 @@ const Tasks = () => {
                   groupVisibilityHandler(i + 1);
                 }}
               >
-                <img className={classes.logo} src={groupVisibility === i+1 ? darkNotebookImage : notebookImage} /><p>{task.name}</p>
+                <img
+                  className={classes.logo}
+                  src={
+                    groupVisibility === i + 1
+                      ? darkNotebookImage
+                      : notebookImage
+                  }
+                />
+                <p>{task.name}</p>
               </li>
+              <div
+                onClick={() => {
+                  groupVisibilityHandler(i + 1);
+                }}
+                className={classes.mouseclick}
+              >
+                <div>
+                  {groupVisibility === i + 1 ? <p>Hide <img className={classes.chevron} src={chevronUp} /> </p> : <p>Show <img className={classes.chevron} src={chevronDown} /></p>}
+                </div>
+              </div>
               {groupVisibility === i + 1 ? (
-                <ul>
+                <div>
                   {task.tasks.map((t) => (
                     <>
                       <li
@@ -152,12 +169,11 @@ const Tasks = () => {
                           taskCompletionHandler(t);
                         }}
                       >
-                        {t.description}{" "}
-                        {isTicked(t.checked)}
+                        {t.description} {isTicked(t.checked)}
                       </li>
                     </>
                   ))}
-                </ul>
+                </div>
               ) : null}
             </Card>
           ))}

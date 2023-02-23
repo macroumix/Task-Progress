@@ -13,6 +13,12 @@
 
 .mouseclick {
     display: flex;
+    justify-content: left;
+    align-items: center;
     flex-direction: row;
-  }
+}
+
+.chevron {
+    height: 15px;
+}
   
