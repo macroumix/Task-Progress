@@ -1,4 +1,5 @@
 import React from 'react';
+import LoadedTasks from './LoadedTasks';
 import ProgressBar from './ProgressBar';
 
 const TaskBar = (props) => {
@@ -26,9 +27,7 @@ const TaskBar = (props) => {
 
   return (
     <>
-    <div>{percentDone.toFixed(2)}%</div>
-    <div>Completed Tasks = {doneTasks}</div>
-    <div>Total Tasks = {totalTasks}</div>
+    <LoadedTasks completed={doneTasks} total={totalTasks}/>
     <ProgressBar bgcolor={bgcolor} completed={percentDone}/>
     </>
   )

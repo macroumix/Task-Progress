@@ -1,0 +1,18 @@
+.mouseclick {
+    cursor:pointer
+}
+
+.main {
+    background-color:rgb(0,155,155);
+    padding: 15px;
+}
+
+.logo{
+    height: 25px;
+}
+
+.mouseclick {
+    display: flex;
+    flex-direction: row;
+  }
+  

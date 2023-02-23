@@ -1,8 +1,15 @@
 import React from 'react'
+import CardT from "../ui/CardT"
 
-const LoadedTasks = () => {
+const LoadedTasks = ({ completed, total}) => {
   return (
-    <div>LoadedTasks</div>
+    <CardT>
+      Grouped Tasks
+      <div>
+        <p>Number of Completed Tasks are: {completed}</p>
+        <p>Number of Total Tasks are: {total} </p>
+      </div>
+    </CardT>
   )
 }
 

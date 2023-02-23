@@ -1,34 +1,19 @@
 import React from "react";
 
+import classes from "./ProgressBar.module.css"
+
 const ProgressBar = ({ bgcolor, completed }) => {
   
-    const containerStyles = {
-      height: 20,
-      width: '870px',
-      backgroundColor: "#e0e0de",
-      borderRadius: 50,
-      margin: 50
-    }
   
     const fillerStyles = {
-      height: '100%',
       width: `${completed}%`,
       backgroundColor: bgcolor,
-      borderRadius: 'inherit',
-      textAlign: 'right',
-      transition: 'width 1s ease-in-out',
     }
-  
-    const labelStyles = {
-      padding: 5,
-      color: 'white',
-      fontWeight: 'bold'
-    }
-  
+
     return (
-      <div style={containerStyles}>
-        <div style={fillerStyles}>
-          <span style={labelStyles}>{`${completed.toFixed(2)}%`}</span>
+      <div className={classes.containerStyles}>
+        <div className={classes.fillerStyles} style={fillerStyles}>
+          <span className={classes.labelStyles}>{`${completed.toFixed(2)}%`}</span>
         </div>
       </div>
     );

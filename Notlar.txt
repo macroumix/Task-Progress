@@ -1,0 +1,9 @@
+* 	CSS'i module css olarak ayır
+
+*	all task values'u ayrı hesapla her re-renderda tekrar hesaplanmasın
+
+*	style'ı fidgeta benzet
+
+*	custom hook ile çalış
+
+*	

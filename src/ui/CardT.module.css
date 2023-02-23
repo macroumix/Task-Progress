@@ -1,21 +1,21 @@
-.card {
+.cardT {
     display: grid;
     grid-template-columns: 5fr 15fr;
-    margin: 25px;
-    padding: 15px;
-    height: 170px;
+    width: 50%;
+    margin: 0 auto;
+    padding: 10px;
     border-radius: 25px;
     box-shadow: 0 1px 8px rgba(0, 0, 0, 0.25);
-    background: linear-gradient(to right, #B17949ff, #785C39ff);
+    background: linear-gradient(to right, rgb(25,75,175), rgb(25,75,165) );
   }
 
-.card > * {
+.cardT > * {
     list-style: none;
     padding: 10px;
     width: 100%;
 }
 
-.card img {
+.cardT img {
   display: block;
   margin-left: auto;
   margin-right: auto;

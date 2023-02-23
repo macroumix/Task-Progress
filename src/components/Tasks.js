@@ -1,9 +1,10 @@
 import React from "react";
-import LoadedTasks from "./LoadedTasks";
 import TaskBar from "./TaskBar";
-import { useState, useEffect, useCallback } from "react";
+import { useState /* useEffect, useCallback */ } from "react";
 import Card from "../ui/Card";
 import classes from "./Tasks.module.css";
+import notebookImage from "../img/notebook.png"
+import darkNotebookImage from "../img/darknotebook.png"
 
 const TASKS = [
   {
@@ -99,55 +100,70 @@ const TASKS = [
 ];
 
 const Tasks = () => {
-  const [groupVisibility, setGroupVisibility] = useState(2);
+  const [groupVisibility, setGroupVisibility] = useState(0);
   const [dummyState, setDummyState] = useState(true);
 
   const groupVisibilityHandler = (group) => {
     setGroupVisibility(group === groupVisibility ? 0 : group);
   };
 
-  
-
   const taskCompletionHandler = (task) => {
     console.log(task, task.description, task.checked, task.value);
-    task.checked = !task.checked
+    task.checked = !task.checked;
     setDummyState(!dummyState);
-  }
+  };
 
-/*   useEffect(() => {
+  /*   useEffect(() => {
 
   }, [taskCompletionHandler])
  */
+
+  const isTicked = (isChecked) => {
+    return isChecked === true ? (
+      <input type="checkbox" checked="checked" />
+      
+    ) : (
+      <input type="checkbox" />
+    );
+  };
+
   return (
-    <>
-      <LoadedTasks />
-      <TaskBar tasks={TASKS}/>
+    <div className={classes.main}>
+      <TaskBar tasks={TASKS} />
       <div>
         <ul>
           {TASKS.map((task, i) => (
             <Card>
               <li
-                className={classes.textl}
+                className={classes.mouseclick}
                 onClick={() => {
                   groupVisibilityHandler(i + 1);
                 }}
               >
-                {task.name}
+                <img className={classes.logo} src={groupVisibility === i+1 ? darkNotebookImage : notebookImage} /><p>{task.name}</p>
               </li>
-              {groupVisibility === i + 1 ? 
+              {groupVisibility === i + 1 ? (
                 <ul>
-                {task.tasks.map((t, i) => (
-                  <>
-                    <li onClick={() => {taskCompletionHandler(t)}}>{t.description} {t.checked ? 1 : 0}</li>
+                  {task.tasks.map((t) => (
+                    <>
+                      <li
+                        className={classes.mouseclick}
+                        onClick={() => {
+                          taskCompletionHandler(t);
+                        }}
+                      >
+                        {t.description}{" "}
+                        {isTicked(t.checked)}
+                      </li>
                     </>
-                ))}
+                  ))}
                 </ul>
-               : null }
+              ) : null}
             </Card>
           ))}
         </ul>
       </div>
-    </>
+    </div>
   );
 };
 
